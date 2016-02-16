@@ -2,7 +2,7 @@
 
 **Temas a tratar:**
 
-> Composer
+> Composer <br />
 > Virtual Host <br />
 > Migraciones <br />
 > ORM Eloquent <br />
