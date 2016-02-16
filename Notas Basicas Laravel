@@ -1,0 +1,4 @@
+*********** Descargar laravel ************
+descarga por medio de composer:
+composer create-project laravel/laravel {Nombre} vercion(5.1) --prefer-dist
+
