@@ -6,7 +6,7 @@ comando: composer update
 descarga por medio de composer:
 composer create-project laravel/laravel {Nombre} vercion(5.1) --prefer-dist
 
-========= Migraciones =============
+========= Migraciones Y Seeders =============
 ++ Crear una plantilla de migracion
 comando: php artisan migrate:install
 
@@ -20,4 +20,7 @@ comando: php artisan migrate
 comando: php artisan migrate:rollback
 
 ++ Para re ejecutar tus migraciones:
-php artisan migrate:refresh
+Comando: php artisan migrate:refresh
+
+++ Correr un Seeder
+Comando: php artisan db:seed --class=<NombreClaseDelSeeder>
