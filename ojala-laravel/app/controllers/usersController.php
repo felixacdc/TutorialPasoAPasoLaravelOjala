@@ -13,7 +13,9 @@ class UsersController extends BaseController
 
 	public function get_index () 
 	{
-		return "We are in the index";
+		$users = Users::all();
+
+		return View::make('users.index')->with('users', $users);
 	}
 
 	public function get_we ()
