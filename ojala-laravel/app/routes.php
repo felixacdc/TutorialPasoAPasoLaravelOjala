@@ -33,3 +33,9 @@ Route::get('createuser', function () {
 	return "The user is stored in the data base...";
 
 });
+
+# llamar a una ruta pasando el nombre de la funcion que se quiere ejecutar
+# Route::get('users', 'UsersController@user');
+
+# De esta forma acceder al controlador si no se manda la funcion ejecutara la funcion get_index
+Route::controller('users', 'UsersController');
