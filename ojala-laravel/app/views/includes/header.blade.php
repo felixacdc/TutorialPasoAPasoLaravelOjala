@@ -3,12 +3,12 @@
 		<a class="navbar-brand" href="{{ URL::to('users') }}">User Warning</a>
 	</div>
 
-	<ul>
+	<ul class="nav navbar-nav navbar-right">
 		<li>
 			<a href="{{ URL::to('users') }}">View all users</a>
 		</li>
 		<li>
-			<a href="{{ URL::to('users/createuser') }}">Create User</a>
+			<a href="{{ URL::to('users/createuser') }}" style="margin-right: 10px;">Create User</a>
 		</li>
 	</ul>
 </nav>

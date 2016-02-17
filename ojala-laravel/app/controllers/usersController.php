@@ -52,4 +52,44 @@ class UsersController extends BaseController
 			return Redirect::to('users');
 		}
 	}
+
+	public function edit ($id)
+	{
+		$user = Users::find($id);
+
+		return View::make('users.edit')->with('user', $user);
+	}
+
+	public function update ($id)
+	{
+		$data = Input::all();
+
+		$rule = array(
+			'first_name'       => 'required|min:3|max:100',
+			'last_name'        => 'required|min:3|max:100',
+			'password'         => 'min:6|max:100',
+			'recover_password' => 'same:password' 
+			);
+		#same compara si las contraseñas son iguales
+
+		$messages = array(
+			'required' => 'Camp obligatory'
+			);
+
+		$validate = Validator::make($data, $rule, $messages);
+
+		if ($validate->fails()) {
+			return Redirect::to('users/' . $id . '/edit')->withErrors($validate);
+		} else {
+			$user = Users::find($id);
+
+			$user->first_name = Input::get('first_name');
+			$user->last_name  = Input::get('last_name');
+			$user->password   = Input::get('password');
+			$user->save();
+
+			Session::flash('message', '¡Updated Properly!');
+			return Redirect::to('users');
+		}
+	}
 }

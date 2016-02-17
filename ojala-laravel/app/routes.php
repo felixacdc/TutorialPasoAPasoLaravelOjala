@@ -18,5 +18,10 @@ Route::get('/', function()
 
 Route::get('users', 'UsersController@get_index');
 
+// Rutas para crear nuevos usuarios
 Route::get('users/createuser', 'UsersController@get_form');
 Route::post('users/createuser', 'UsersController@post_form');
+
+// Editar usuarios
+Route::get('users/{id}/edit', 'usersController@edit');
+Route::post('users/{id}', 'UsersController@update');

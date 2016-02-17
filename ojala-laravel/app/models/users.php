@@ -8,6 +8,9 @@ class Users extends Eloquent
 	
 	public function setPasswordAttribute($password)
 	{
-		$this->attributes['password'] = Hash::make($password);
+		# Evita que el password se encripte y se cambie en la DB si esta vacio
+		if ( ! empty($password)) {
+			$this->attributes['password'] = Hash::make($password);
+		}
 	}
 }
