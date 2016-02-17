@@ -5,11 +5,6 @@
 */
 class UsersController extends BaseController
 {
-	
-	public function user ()
-	{
-		return "Welcome to the controller for the users";
-	}
 
 	public function get_index () 
 	{
@@ -18,31 +13,43 @@ class UsersController extends BaseController
 		return View::make('users.index')->with('users', $users);
 	}
 
-	public function get_we ()
-	{
-		return "We";
-	}
-
-	public function get_hello ($hello)
-	{
-		return "Hello " . $hello;
-	}
-
 	public function get_form ()
 	{
-		$variable = Form::open(array('url' => '/users/form', 'method' => 'post'));
-		$variable.= Form::text('campo');
-		$variable.= Form::submit('enviar');
-		$variable.= Form::close();
-
-		return $variable;
-
+		return View::make('users.createuser');
 	}
 
 	public function post_form ()
 	{
-		$campo = Input::get('campo');
+		$data = Input::all();
 
-		return 'The camp value is: ' . $campo;
+		$rule = array(
+			'first_name'       => 'required|min:3|max:100',
+			'last_name'        => 'required|min:3|max:100',
+			'email'            => 'required|min:6|max:100|unique:users,email',
+			'password'         => 'required|min:6|max:100',
+			'recover_password' => 'same:password' 
+			);
+		#same compara si las contraseñas son iguales
+
+		$messages = array(
+			'required' => 'Camp obligatory'
+			);
+
+		$validate = Validator::make($data, $rule, $messages);
+
+		if ($validate->fails()) {
+			return Redirect::back()->withErrors($validate);
+		} else {
+			$user = new Users;
+
+			$user->first_name = Input::get('first_name');
+			$user->last_name  = Input::get('last_name');
+			$user->password   = Input::get('password');
+			$user->email      = Input::get('email');
+			$user->save();
+
+			Session::flash('message', '¡Registered Properly!');
+			return Redirect::to('users');
+		}
 	}
 }

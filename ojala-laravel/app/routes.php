@@ -16,26 +16,7 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('prueba', function () { 
-	return 'it is my first route...';
-});
+Route::get('users', 'UsersController@get_index');
 
-Route::get('createuser', function () { 
-	$user = new Users;
-
-	$user->first_name = "Felix";
-	$user->last_name = "Méndez";
-	$user->password = "794613";
-	$user->email = "pfmata01@gmail.com";
-
-	$user->save();
-
-	return "The user is stored in the data base...";
-
-});
-
-# llamar a una ruta pasando el nombre de la funcion que se quiere ejecutar
-# Route::get('users', 'UsersController@user');
-
-# De esta forma acceder al controlador si no se manda la funcion ejecutara la funcion get_index
-Route::controller('users', 'UsersController');
+Route::get('users/createuser', 'UsersController@get_form');
+Route::post('users/createuser', 'UsersController@post_form');
