@@ -32,6 +32,10 @@
 						<td>{{ $value->email }}</td>
 						<td>
 							<a href="{{ URL::to('users/' . $value->id . '/edit') }}" class="btn btn-small btn-info">Edit User</a>
+
+							<a href="{{ URL::to('users/' . $value->id) }}" class="btn btn-small btn-success">Show User</a>
+
+							<a href="{{ URL::to('users/drop/' . $value->id) }}" class="btn btn-small btn-warning">Delete User</a>
 						</td>
 					</tr>
 				

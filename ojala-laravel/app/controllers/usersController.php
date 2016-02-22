@@ -92,4 +92,19 @@ class UsersController extends BaseController
 			return Redirect::to('users');
 		}
 	}
+
+	public function show ($id)
+	{
+		$user = Users::find($id);
+		return View::make('users.show')->with('user', $user);
+	}
+
+	public function drop ($id)
+	{
+		$user = Users::find($id);
+		$user->delete();
+		Session::flash('message', 'Deleted Properly!');
+		return Redirect::to('users');
+	}
+
 }

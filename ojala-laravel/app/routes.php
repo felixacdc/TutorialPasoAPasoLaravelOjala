@@ -25,3 +25,9 @@ Route::post('users/createuser', 'UsersController@post_form');
 // Editar usuarios
 Route::get('users/{id}/edit', 'usersController@edit');
 Route::post('users/{id}', 'UsersController@update');
+
+# Ver Usuario existente
+Route::get('users/{id}', 'UsersController@show');
+
+# Eliminar un usuario
+Route::get('users/drop/{id}', 'UsersController@drop');
