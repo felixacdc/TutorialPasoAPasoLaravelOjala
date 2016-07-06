@@ -18,4 +18,6 @@
 > Edicion de Usuarios <br />
 > Creacion de vistas <br />
 > Eliminacion de Usuarios <br />
-
+<br>
+- 
+- [x] Curso Finalizado
